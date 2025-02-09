@@ -10,7 +10,7 @@ export default function Header() {
                 <Input label="Title" type="text"/>
                 <Input label="Pages" type="number"/>
                 <Input label="Author" type="text"/>
-                <Button label="Submit" text="Submit"/>
+                <Button label="Submit" text="Submit" color="#ECE5C7"/>
             </div>
             <hr className="text-[#CDC2AE] h-[5px] bg-[#354259] border-none"/>
         </>
