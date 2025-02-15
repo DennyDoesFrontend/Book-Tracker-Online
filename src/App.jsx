@@ -48,6 +48,13 @@ export default function App() {
     setBooks(books.filter(book => book.id !== id))
   }
 
+  // function to edit book
+  const editBook = (id, newTitle, newPages, newAuthor) => {
+    setBooks(books.map(book => 
+      book.id === id ? { ...book, title: newTitle, pages: newPages, author: newAuthor } : book
+    ));
+  };
+  
   return (
     <main className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex flex-col gap-[20px]">
       <Header />
@@ -61,7 +68,16 @@ export default function App() {
 
       <div className="grid grid-cols-4 gap-3">
         {
-          books.map( (book)=> (<Card key={book.id} title={book.title} pages={book.pages} author={book.author} onDelete={() => deleteBook(book.id)}/>))
+          books.map( (book)=> (<Card 
+            key={book.id} 
+            id={book.id} 
+            title={book.title} 
+            pages={book.pages} 
+            author={book.author} 
+            onDelete={() => deleteBook(book.id)}
+            onEdit={(id, newTitle, newPages, newAuthor) => editBook(id, newTitle, newPages, newAuthor)}
+          />
+          ))
         }
       </div>
     </main>
