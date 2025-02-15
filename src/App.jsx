@@ -12,7 +12,7 @@ export default function App() {
       id: 1,
       title: 'Harry Potter',
       pages : 265,
-      author: "Denzel Ashitey"
+      author: "J. K. Rowling"
     },
     {
       id: 2,
@@ -43,6 +43,11 @@ export default function App() {
     setAuthor("");
   };
 
+  // function to delete a book
+  const deleteBook = (id) => {
+    setBooks(books.filter(book => book.id !== id))
+  }
+
   return (
     <main className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex flex-col gap-[20px]">
       <Header />
@@ -56,7 +61,7 @@ export default function App() {
 
       <div className="grid grid-cols-4 gap-3">
         {
-          books.map( (book)=> (<Card key={book.id} title={book.title} pages={book.pages} author={book.author}/>))
+          books.map( (book)=> (<Card key={book.id} title={book.title} pages={book.pages} author={book.author} onDelete={() => deleteBook(book.id)}/>))
         }
       </div>
     </main>

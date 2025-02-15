@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { useState } from "react";
 
-export default function Card({title, pages, author}) {
+export default function Card({title, pages, author, onDelete}) {
     const [status, setStatus] = useState("Reading")
     const [isBrown, setIsBrown] = useState(true)
     function handleClick() {
@@ -24,7 +24,7 @@ export default function Card({title, pages, author}) {
                 <p className="text-2xl text-[#354259]">{author}</p>
             </div>
             <Button onClick={handleClick} text={status} color={isBrown ? '#ECE5C7' : 'orange'}/>
-            <Button text="Delete" color="#CDC2AE"/>
+            <Button text="Delete" color="#CDC2AE" onClick={onDelete}/>
         </div>
     )
 }
